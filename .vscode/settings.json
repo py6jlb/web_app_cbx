@@ -14,5 +14,8 @@
         "dotnettools",
         "Hmac",
         "Iddict",
+        "Linq",
+        "statuscode",
+        "typeparam"
     ],
 }
