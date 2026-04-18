@@ -1,0 +1,36 @@
+{
+  "name": "aspnet-vue3-fullstack",
+  "dockerComposeFile": [
+    "docker-compose.yml"
+  ],
+  "service": "backend",
+  "workspaceFolder": "/workspace",
+  "forwardPorts": [
+    5000,
+    5001,
+    5173
+  ],
+  "portsAttributes": {
+    "5001": {
+      "protocol": "https"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-dotnettools.csharp",
+        "ms-dotnettools.csdevkit",
+        "streetsidesoftware.code-spell-checker",
+        "streetsidesoftware.code-spell-checker-russian",
+        "csharpier.csharpier-vscode",
+        "humao.rest-client",
+        "ms-dotnettools.dotnet-interactive-vscode",
+        "vscode-icons-team.vscode-icons",
+        "dbaeumer.vscode-eslint",
+        "EditorConfig.EditorConfig",
+        "esbenp.prettier-vscode"
+      ]
+    }
+  },
+  "postCreateCommand": "chmod +x .devcontainer/scripts/post-create.sh && .devcontainer/scripts/post-create.sh"
+}

@@ -1,0 +1,16 @@
+services:
+  backend:
+    build:
+      context: ../
+      dockerfile: .devcontainer/backend.Dockerfile
+    volumes:
+      - ../:/workspace:cached
+      - db:/workspace/src/cookbook/db
+      - filestorage:/workspace/src/cookbook/filestorage
+      - persistence:/workspace/persistence
+    command: sleep infinity
+
+volumes:
+  db:
+  persistence:
+  filestorage:
