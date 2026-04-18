@@ -7,5 +7,5 @@ sudo chown -R $USER:$USER /workspace/src/cookbook/filestorage
 dotnet tool install dotnet-ef
 dotnet tool install csharpier
 dotnet dev-certs https
-dotnet restore ./backend
+dotnet restore ./src/cookbook
 

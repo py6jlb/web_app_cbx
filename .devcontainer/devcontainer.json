@@ -1,5 +1,5 @@
 {
-  "name": "aspnet-vue3-fullstack",
+  "name": "aspnet-htmx",
   "dockerComposeFile": [
     "docker-compose.yml"
   ],
