@@ -1,8 +1,6 @@
 #!/bin/bash
 
-sudo chown -R $USER:$USER /workspace/persistence
-sudo chown -R $USER:$USER /workspace/src/cookbook/db
-sudo chown -R $USER:$USER /workspace/src/cookbook/filestorage
+sudo chown -R $USER:$USER /workspace
 
 dotnet tool install dotnet-ef
 dotnet tool install csharpier

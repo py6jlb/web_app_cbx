@@ -1,4 +1,4 @@
-namespace cookbook.Extensions;
+namespace cookbook.StartupExtensions;
 
 public static class RouteExtensions
 {

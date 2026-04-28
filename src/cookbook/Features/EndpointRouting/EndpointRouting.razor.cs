@@ -1,4 +1,4 @@
-using cookbook.Extensions;
+using cookbook.StartupExtensions;
 using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace cookbook.Features.EndpointRouting;

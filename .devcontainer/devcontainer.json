@@ -1,5 +1,5 @@
 {
-  "name": "aspnet-htmx",
+  "name": "cookbook-htmx",
   "dockerComposeFile": [
     "docker-compose.yml"
   ],
