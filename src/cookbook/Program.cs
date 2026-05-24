@@ -10,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.AddOpenTelemetry();
 builder.AddDatabase();
+builder.AddAuthenticationServices();
 builder.AddApplicationServices();
 builder.AddErrorHandling();
 
@@ -23,8 +24,11 @@ if (app.Environment.IsProduction())
 }
 else
 {
+    await app.ApplyMigrations();
     app.UseDeveloperExceptionPage();
 }
+
+await app.SeedInitialData();
 
 app.UseHttpsRedirection();
 app.MapStaticAssets();
@@ -36,4 +40,4 @@ app.Map("/statuscode/{code:int}", (int code) => new RazorComponentResult<StatusC
 
 app.MapApplicationRoutes();
 
-app.Run();
+await app.RunAsync();

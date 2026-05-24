@@ -15,7 +15,7 @@ public static class Auth
     {
         builder
             .Services.AddIdentity<AppIdentityUser, IdentityRole>()
-            .AddEntityFrameworkStores<AuthContext>()
+            .AddEntityFrameworkStores<AuthDbContext>()
             .AddDefaultTokenProviders();
 
         var authOpt = builder.Configuration.GetSection("Auth").Get<Settings.Auth>()!;
@@ -50,6 +50,13 @@ public static class Auth
                 }
             );
         });
+
+        // Configure antiforgery to accept tokens from headers
+        builder.Services.AddAntiforgery(options =>
+        {
+            options.HeaderName = "RequestVerificationToken";
+        });
+
         return builder;
     }
 }

@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace cookbook.Infrastructure.db;
 
-public class AuthContext : IdentityDbContext
+public class AuthDbContext : IdentityDbContext
 {
-    public AuthContext(DbContextOptions<AuthContext> options)
+    public AuthDbContext(DbContextOptions<AuthDbContext> options)
         : base(options) { }
 
     protected override void OnModelCreating(ModelBuilder builder)

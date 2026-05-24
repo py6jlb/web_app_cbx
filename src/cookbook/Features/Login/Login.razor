@@ -1,0 +1,42 @@
+@using Microsoft.AspNetCore.Antiforgery
+@using cookbook.DTOs.Auth
+@layout HtmxLayout
+
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+    <div class="row g-0 shadow-lg rounded-3" style="max-width: 400px; width: 100%;">
+        <div class="col-12 p-4" id="login-form">
+            <div class="text-center mb-4">
+                <h2 class="fw-bold text-primary">Cookbook</h2>
+                <p class="text-muted">Вход в систему</p>
+            </div>
+
+            <form hx-post="/login" hx-target="#login-form" hx-swap="outerHTML" hx-indicator="#login-btn .htmx-indicator">
+                 <HtmxAntiforgeryToken />
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email адрес</label>
+                    <input type="email" class="form-control"
+                           id="email" name="email" value="@LoginForm.Email" placeholder="name@example.com" required autofocus />
+
+                </div>
+
+                <div class="mb-3">
+                    <label for="password" class="form-label">Пароль</label>
+                    <input type="password"
+                           class="form-control id="password"
+                           name="password" placeholder="Введите пароль" required value="@LoginForm.Password"/>
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button type="submit" id="login-btn" class="btn btn-primary btn-lg">
+                        <span class="htmx-indicator spinner me-2"></span>
+                        Войти
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter] public LoginUserDto LoginForm { get; set; } = new ();
+}

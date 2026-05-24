@@ -11,25 +11,14 @@
     <link rel="stylesheet" href="@Assets["app.css"]" />
     <link href="cookbook.styles.css" rel="stylesheet">
     <script src="https://unpkg.com/htmx.org@2.0.4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="@Assets["client-error-handling.js"]"></script>
     <HeadOutlet />
 </head>
 
 <body>
     <div class="page">
-        <div class="sidebar">
-            <NavMenu />
-        </div>
-
-        <main>
-            <div class="top-row px-4">
-                
-            </div>
-
-            <article class="content px-4">
-                @Body
-            </article>
-        </main>
+        @Body
     </div>
 </body>
 

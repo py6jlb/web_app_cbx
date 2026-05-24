@@ -6,9 +6,9 @@ using File = cookbook.Domain.Entities.File;
 
 namespace cookbook.Infrastructure.db;
 
-public sealed class AppContext : DbContext
+public sealed class AppDbContext : DbContext
 {
-    public AppContext(DbContextOptions<AppContext> options)
+    public AppDbContext(DbContextOptions<AppDbContext> options)
         : base(options) { }
 
     public DbSet<Tag> Tags { get; set; }

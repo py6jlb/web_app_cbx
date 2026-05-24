@@ -14,7 +14,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.Options;
-using AppContext = cookbook.Infrastructure.db.AppContext;
+using AppDbContext = cookbook.Infrastructure.db.AppDbContext;
 
 namespace cookbook.Services;
 
@@ -22,14 +22,14 @@ public sealed class AuthService
 {
     private readonly UserManager<AppIdentityUser> _userManager;
     private readonly ILogger<AuthService> _logger;
-    private readonly AppContext _db;
-    private readonly AuthContext _identityDb;
+    private readonly AppDbContext _db;
+    private readonly AuthDbContext _identityDb;
     private readonly Auth _authOptions;
 
     public AuthService(
         ILogger<AuthService> logger,
-        AppContext db,
-        AuthContext identityDb,
+        AppDbContext db,
+        AuthDbContext identityDb,
         UserManager<AppIdentityUser> userManager,
         IOptions<Auth> authOptions
     )

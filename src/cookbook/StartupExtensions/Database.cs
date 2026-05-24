@@ -17,9 +17,8 @@ public static class Database
     public static async Task ApplyMigrations(this WebApplication app)
     {
         using IServiceScope scope = app.Services.CreateScope();
-        await using var db =
-            scope.ServiceProvider.GetRequiredService<Infrastructure.db.AppContext>();
-        await using var identityDb = scope.ServiceProvider.GetRequiredService<AuthContext>();
+        await using var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+        await using var identityDb = scope.ServiceProvider.GetRequiredService<AuthDbContext>();
         try
         {
             await db.Database.MigrateAsync();
@@ -34,7 +33,7 @@ public static class Database
         }
     }
 
-    public static async Task SeedOpenidData(this WebApplication app)
+    public static async Task SeedInitialData(this WebApplication app)
     {
         await using AsyncServiceScope scope = app.Services.CreateAsyncScope();
         var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
@@ -74,13 +73,13 @@ public static class Database
     public static WebApplicationBuilder AddDatabase(this WebApplicationBuilder builder)
     {
         var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-        builder.Services.AddDbContext<Infrastructure.db.AppContext>(options =>
+        builder.Services.AddDbContext<AppDbContext>(options =>
         {
             options.UseSqlite(connectionString);
             options.UseSnakeCaseNamingConvention();
         });
 
-        builder.Services.AddDbContext<AuthContext>(options =>
+        builder.Services.AddDbContext<AuthDbContext>(options =>
         {
             options.UseSqlite(connectionString);
             options.UseSnakeCaseNamingConvention();

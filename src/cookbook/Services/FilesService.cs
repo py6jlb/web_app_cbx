@@ -5,16 +5,16 @@ using cookbook.Infrastructure.db;
 using cookbook.Settings;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
-using AppContext = cookbook.Infrastructure.db.AppContext;
+using AppDbContext = cookbook.Infrastructure.db.AppDbContext;
 
 namespace cookbook.Features.Files;
 
 public sealed class FilesService
 {
-    private readonly AppContext _db;
+    private readonly AppDbContext _db;
     private readonly Filestorage _cfg;
 
-    public FilesService(AppContext db, IOptions<Filestorage> cfg)
+    public FilesService(AppDbContext db, IOptions<Filestorage> cfg)
     {
         _cfg = cfg.Value;
         _db = db;
